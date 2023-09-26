@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:03:49 by elias             #+#    #+#             */
-/*   Updated: 2023/09/26 15:12:28 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/26 15:13:40 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main()
 {
     {
-        std::cout << "\n------- MUTANT STACK INT -------\n" << std::endl;
+        std::cout << "------- MUTANT STACK INT -------\n" << std::endl;
         MutantStack<int> mstack;
         mstack.push(111);
         mstack.push(17);
