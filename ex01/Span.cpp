@@ -6,11 +6,12 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/09/26 12:56:26 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/26 13:00:17 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <sstream>
 #include "Span.hpp"
 
 // Print
@@ -71,6 +72,16 @@ void Span::addNumber(int number)
 		this->_vector.push_back(number);
 	else
 		throw (StackFullException());
+}
+
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	while (begin != end)
+	{
+		this->_vector.push_back(*begin++);
+		if (this->_vector.size() > this->_size)
+			throw (StackFullException());
+	}
 }
 
 int Span::shortestSpan(void)

@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/09/26 12:53:55 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/26 12:58:30 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <iostream>
 # include <algorithm>
 # include <vector>
-# include <sstream>
 
 class Span
 {
@@ -38,6 +37,7 @@ class Span
 
 		// Methods
 		void	addNumber(int number);
+        void	addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		int		shortestSpan(void);
 		int		longestSpan(void);
 
