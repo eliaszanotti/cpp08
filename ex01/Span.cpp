@@ -6,12 +6,11 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/09/25 13:11:44 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/26 12:56:26 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <sstream>
 #include "Span.hpp"
 
 // Print
@@ -42,10 +41,12 @@ Span::Span()
 Span::Span(size_t n)
 {
 	this->_size = n;
+	this->print("created", 2);
 }
 
 Span::Span(Span const &copy)
 {
+	*this = copy;
 	this->print("created by copy", 2);
 }
 
@@ -57,7 +58,58 @@ Span::~Span()
 // Operators
 Span const	&Span::operator=(Span const &copy)
 {
+	this->_size = copy._size;
+	this->_vector = copy._vector;
 	this->print("created by assignment", 2);
+	return (*this);
 }
 
 // Methods
+void Span::addNumber(int number)
+{
+	if (this->_vector.size() < this->_size)
+		this->_vector.push_back(number);
+	else
+		throw (StackFullException());
+}
+
+int Span::shortestSpan(void)
+{
+	int min;
+
+	if (this->_vector.size() <= 1)
+		throw (StackEmptyException());
+	else
+	{
+		std::sort(this->_vector.begin(), this->_vector.end());
+		min = this->_vector[1] - this->_vector[0];
+		for (size_t i = 0; i < this->_vector.size() - 1; i++)
+		{
+			if (this->_vector[i + 1] - this->_vector[i] < min)
+				min = this->_vector[i + 1] - this->_vector[i];
+		}
+	}
+	return (min);
+}
+
+int Span::longestSpan(void)
+{
+    if (this->_vector.size() <= 1)
+		throw (StackEmptyException());
+	else
+	{
+		std::sort(this->_vector.begin(), this->_vector.end());
+		return (this->_vector[this->_vector.size()] - this->_vector[0]);
+	}
+}
+
+// Exceptions
+const char *Span::StackFullException::what(void) const throw()
+{
+    return ("\e[31m[ERROR]\e[0m stack is full");
+}
+
+const char *Span::StackEmptyException::what(void) const throw()
+{
+    return ("\e[31m[ERROR]\e[0m stack is empty");
+}
