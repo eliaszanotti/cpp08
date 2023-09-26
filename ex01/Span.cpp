@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/09/26 13:00:17 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/26 13:44:54 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void Span::print(std::string const &str, int color) const
 		colorsString = oss.str();
 	}
 	if (str.empty())
-		std::cout << colorsString << "[Span " << this->_size << "] " << reset;
+		std::cout << colorsString << "[Span " << this->_size << "]\t" << reset;
 	else
-		std::cout << colorsString << "[Span " << this->_size << "] " << reset << str << std::endl;
+		std::cout << colorsString << "[Span " << this->_size << "]\t" << reset << str << std::endl;
 }
 
 // Constructors
@@ -110,17 +110,17 @@ int Span::longestSpan(void)
 	else
 	{
 		std::sort(this->_vector.begin(), this->_vector.end());
-		return (this->_vector[this->_vector.size()] - this->_vector[0]);
+		return (this->_vector[this->_size - 1] - this->_vector[0]);
 	}
 }
 
 // Exceptions
 const char *Span::StackFullException::what(void) const throw()
 {
-    return ("\e[31m[ERROR]\e[0m stack is full");
+    return ("\e[31m[ERROR]\e[0m\t\tstack is full");
 }
 
 const char *Span::StackEmptyException::what(void) const throw()
 {
-    return ("\e[31m[ERROR]\e[0m stack is empty");
+    return ("\e[31m[ERROR]\e[0m\t\tstack is empty");
 }
