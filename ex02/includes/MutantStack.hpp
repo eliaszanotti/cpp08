@@ -6,7 +6,7 @@
 /*   By: elias <elias@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:34:13 by elias             #+#    #+#             */
-/*   Updated: 2023/09/26 14:58:37 by elias            ###   ########.fr       */
+/*   Updated: 2023/09/26 15:05:50 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ class MutantStack: public std::stack<T>
 			return (this->c.end());
 		}
 };
+
+#include "MutantStack.tpp"
 
 #endif
